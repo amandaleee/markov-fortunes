@@ -2,9 +2,6 @@
 
 require 'markov.php';
 
-function markov() {
-}
-
 if (isset($_POST['submit'])) {
     
     $order  = 5;
@@ -16,6 +13,10 @@ if (isset($_POST['submit'])) {
         $markov_table = generate_markov_table($text, $order);
         $markov = generate_markov_text($length, $markov_table, $order);
     }
+    //explode at the first space so we can be sure we start with a full word. 
+    $markov_result = explode(" ", $markov, 2); 
+
+    // print_r($markov_result);
     //todo: don't start with a space; 
     // end with punctuation;
     //begin and end with a real word. 
@@ -49,7 +50,7 @@ if (isset($_POST['submit'])) {
         <?php if (isset($markov)) : ?>
             <!-- back content -->
             <div class="back">
-                <p style="max-width: 350px;"><?php echo $markov; ?></p>
+                <p style="max-width: 350px;"><?php  print_r($markov_result[1]); ?></p>
             </div>
         <?php endif; ?>
     </div>
