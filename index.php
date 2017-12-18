@@ -14,8 +14,14 @@ if (isset($_POST['submit'])) {
         $markov = generate_markov_text($length, $markov_table, $order);
     }
     //explode at the first space so we can be sure we start with a full word. 
-    $markov_result = explode(" ", $markov, 2); 
-
+    $markov_result_1 = explode(" ", $markov, 2); 
+    //explode at the last space so we can be sure we end with a full word. 
+        // reverse the string
+        $markov_result_1_rev = strrev($markov_result_1[1]); 
+        //explode at the last space
+        $markov_result_2_rev = explode(" ", $markov_result_1_rev, 2);
+        //[put yr thing down flip it and] reverse it again
+        $markov_result_2 = strrev($markov_result_2_rev[1]);
     // print_r($markov_result);
     //todo: don't start with a space; 
     // end with punctuation;
@@ -50,7 +56,7 @@ if (isset($_POST['submit'])) {
         <?php if (isset($markov)) : ?>
             <!-- back content -->
             <div class="back">
-                <p style="max-width: 350px;"><?php  print_r($markov_result[1]); ?></p>
+                <p style="max-width: 350px;"><?php  print_r($markov_result_2); ?></p>
             </div>
         <?php endif; ?>
     </div>
