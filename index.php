@@ -9,24 +9,14 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script type="text/javascript">
         $(document).ready(function(){
-            // alert("yup");
-            // $.get("markov-generate.php", function(data){
-            //        alert(data);
-
-            //    });
-
              $.ajax({
                 type: 'POST',
                 url: 'markov-generate.php',
-                // dataType: "json",
                 async:false,
-                // data: {
-                //     Country: "Japan"
-                // },
-                success: function(data) {
-                    console.log(data);
 
-                    alert(data);
+                success: function(data) {
+                    $(".fortune").html(data);
+ 
                 }
 
             });
@@ -43,9 +33,9 @@
             <form method="post" action="" name="markov">
                 <input type="submit" name="submit" value="GO" />
             </form>
-            <?php if (isset($markov)) : ?>
-                    <p style="max-width: 350px;"><?php  print_r($markov_result); ?></p>
-            <?php endif; ?>
+                    <p style="max-width: 350px;" class="fortune">
+                    </p>
+
         <!-- todo - card below -->
     <div class="flipper">
         <div class="front">
