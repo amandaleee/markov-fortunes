@@ -20,10 +20,8 @@ if (isset($_POST['submit'])) {
         $markov_result_1_rev = strrev($markov_result_1[1]); 
         //explode at the last space
         $markov_result_2_rev = explode(" ", $markov_result_1_rev, 2);
-        //[put yr thing down flip it and] reverse it again
-        $markov_result_2 = strrev($markov_result_2_rev[1]);
-    // print_r($markov_result);
-    //todo: don't start with a space; 
+        //[put yr thing down flip it and] reverse it again. also upcase the first char and end with a period. 
+        $markov_result_2 = ucfirst(strrev($markov_result_2_rev[1])) . ".";
     // end with punctuation;
     //begin and end with a real word. 
     //add periods to the end of fortunes
