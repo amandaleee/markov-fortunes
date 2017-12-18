@@ -10,6 +10,26 @@
     <script type="text/javascript">
         $(document).ready(function(){
             // alert("yup");
+            // $.get("markov-generate.php", function(data){
+            //        alert(data);
+
+            //    });
+
+             $.ajax({
+                type: 'POST',
+                url: 'markov-generate.php',
+                // dataType: "json",
+                async:false,
+                // data: {
+                //     Country: "Japan"
+                // },
+                success: function(data) {
+                    console.log(data);
+
+                    alert(data);
+                }
+
+            });
         });
     </script>
 </head>
