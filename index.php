@@ -20,12 +20,16 @@ if (isset($_POST['submit'])) {
         $markov_result_1_rev = strrev($markov_result_1[1]); 
         //explode at the last space
         $markov_result_2_rev = explode(" ", $markov_result_1_rev, 2);
-        //[put yr thing down flip it and] reverse it again. also upcase the first char and end with a period. 
-        $markov_result_2 = ucfirst(strrev($markov_result_2_rev[1])) . ".";
-    // end with punctuation;
-    //begin and end with a real word. 
-    //add periods to the end of fortunes
-    //do this on page load and then again when user hovers - ajax request
+
+        //[put yr thing down flip it and] reverse it again. also upcase the first char 
+        $markov_result_2 = ucfirst(strrev($markov_result_2_rev[1])); 
+
+        //add a period to the end of the fortune, if it's not already there. 
+        if (strrpos($markov_result_2 , ".") !== 140) {
+            $markov_result = $markov_result_2 . ".";
+        } else {
+            $markov_result = $markov_result_2; 
+        }
 
 }
 ?>
@@ -54,7 +58,9 @@ if (isset($_POST['submit'])) {
         <?php if (isset($markov)) : ?>
             <!-- back content -->
             <div class="back">
-                <p style="max-width: 350px;"><?php  print_r($markov_result_2); ?></p>
+                <p style="max-width: 350px;"><?php  print_r($markov_result); ?></p>
+
+                <!-- <h2><?php print_r($end_period); ?></h2> -->
             </div>
         <?php endif; ?>
     </div>
