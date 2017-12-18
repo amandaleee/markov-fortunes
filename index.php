@@ -49,21 +49,19 @@ if (isset($_POST['submit'])) {
     
 
     <div class="flip-container" ontouchstart="this.classList.toggle('hover');">
-    <div class="flipper">
-        <div class="front">
             <h1>Tap for fortune</h1>
             <form method="post" action="" name="markov">
                 <input type="submit" name="submit" value="GO" />
             </form>
+            <?php if (isset($markov)) : ?>
+                    <p style="max-width: 350px;"><?php  print_r($markov_result); ?></p>
+            <?php endif; ?>
+        <!-- todo - card below -->
+    <div class="flipper">
+        <div class="front">
         </div>
-        <?php if (isset($markov)) : ?>
-            <!-- back content -->
-            <div class="back">
-                <p style="max-width: 350px;"><?php  print_r($markov_result); ?></p>
-
-                <!-- <h2><?php print_r($end_period); ?></h2> -->
-            </div>
-        <?php endif; ?>
+        <div class="back">
+        </div>
     </div>
 </div>
 
